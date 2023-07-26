@@ -16,8 +16,8 @@ class SignUpPage extends StatelessWidget {
             horizontal: 24,
           ),
           children: [
-            title(),
-            inputSection(),
+            titleSection(),
+            inputSection(context),
             tacSection(),
           ],
         ),
@@ -26,7 +26,7 @@ class SignUpPage extends StatelessWidget {
   }
 }
 
-Widget title() {
+Widget titleSection() {
   return Container(
     margin: const EdgeInsets.only(
       top: 32,
@@ -41,7 +41,7 @@ Widget title() {
   );
 }
 
-Widget inputSection() {
+Widget inputSection(context) {
   return Container(
     margin: const EdgeInsets.only(
       top: 30,
@@ -77,8 +77,10 @@ Widget inputSection() {
           height: 30,
         ),
         CustomFilledButton(
-          tittle: 'Get Started',
-          onPressed: () {},
+          tittle: 'Sign Up',
+          onPressed: () {
+            Navigator.pushNamed(context, '/bonus-page');
+          },
         ),
       ],
     ),
@@ -87,7 +89,7 @@ Widget inputSection() {
 
 Widget tacSection() {
   return Container(
-    margin: EdgeInsets.only(
+    margin: const EdgeInsets.only(
       top: 50,
     ),
     child: CustomTextButton(

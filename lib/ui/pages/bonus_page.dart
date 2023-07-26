@@ -15,7 +15,7 @@ class BonusPage extends StatelessWidget {
           children: [
             cardSection(),
             titleSection(),
-            startButton(),
+            startButton(context),
           ],
         ),
       ),
@@ -144,14 +144,16 @@ Widget titleSection() {
   );
 }
 
-Widget startButton() {
+Widget startButton(context) {
   return Container(
     width: 220,
     height: 55,
     margin: const EdgeInsets.only(top: 50,),
     child: CustomFilledButton(
       tittle: 'Start Fly Now',
-      onPressed: () {},
+      onPressed: () {
+        Navigator.pushNamed(context, '/main');
+      },
     ),
   );
 }

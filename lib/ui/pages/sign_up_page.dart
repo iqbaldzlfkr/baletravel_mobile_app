@@ -77,7 +77,7 @@ Widget inputSection(context) {
           height: 30,
         ),
         CustomFilledButton(
-          tittle: 'Sign Up',
+          title: 'Sign Up',
           onPressed: () {
             Navigator.pushNamed(context, '/bonus-page');
           },
@@ -93,7 +93,7 @@ Widget tacSection() {
       top: 50,
     ),
     child: CustomTextButton(
-      tittle: 'Terms and Conditions',
+      title: 'Terms and Conditions',
       onPressed: () {},
     ),
   );

@@ -150,7 +150,7 @@ Widget startButton(context) {
     height: 55,
     margin: const EdgeInsets.only(top: 50,),
     child: CustomFilledButton(
-      tittle: 'Start Fly Now',
+      title: 'Start Fly Now',
       onPressed: () {
         Navigator.pushNamed(context, '/home');
       },

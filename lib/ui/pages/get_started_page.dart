@@ -3,7 +3,6 @@ import 'package:bale_travel/ui/widgets/buttons.dart';
 import 'package:flutter/material.dart';
 
 class GetStartedPage extends StatefulWidget {
-
   const GetStartedPage({super.key});
 
   @override
@@ -14,7 +13,7 @@ class _GetStartedPageState extends State<GetStartedPage> {
   List images = [
     'assets/image_get_started.png',
     'assets/image_destination1.png',
-    'assets/image_destination2.png',
+    'assets/image_destination5.png',
   ];
 
   List title = [
@@ -28,7 +27,7 @@ class _GetStartedPageState extends State<GetStartedPage> {
     'Explore new world with us and let\nyourself set be free',
     'Travel with your lovely ones',
   ];
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,48 +47,84 @@ class _GetStartedPageState extends State<GetStartedPage> {
                   ),
                 ),
               ),
+              Container(
+                margin: const EdgeInsets.only(top: 150, right: 20),
+                child: Align(
+                  alignment: Alignment.topRight,
+                  child: Column(
+                    children: List.generate(3, (indexDots){
+                      return Container(
+                        width: 8,
+                        height: index == indexDots? 25 : 8,
+                        margin: const EdgeInsets.only(bottom: 2),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          color: index == indexDots? primaryColor : primaryColor.withOpacity(0.3),
+                        ),
+                      );
+                    }),
+                  ),
+                ),
+              ),
               Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Container(
                       padding: const EdgeInsets.all(24),
-                      child: Text(
-                        title[index],
-                        textAlign: TextAlign.center,
-                        style: whiteTextStyle.copyWith(
-                          fontSize: 32,
-                          fontWeight: semiBold,
+                      child: Column(
+                        children: [
+                          Text(
+                            title[index],
+                            textAlign: TextAlign.center,
+                            style: whiteTextStyle.copyWith(
+                              fontSize: 32,
+                              fontWeight: semiBold,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            text[index],
+                            style: whiteTextStyle.copyWith(
+                              fontSize: 16,
+                              fontWeight: light,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
+                      ),
+                    ),
+                    if (index == 2)
+                      Container(
+                        margin: const EdgeInsets.only(
+                          bottom: 80,
+                        ),
+                        child: Column(
+                          children: [
+                            CustomFilledButton(
+                              onPressed: () {
+                                Navigator.pushNamed(context, '/sign-up');
+                              },
+                              title: 'Get Started',
+                              width: 220,
+                            ),
+                            const SizedBox(height: 20,),
+                            CustomSignInButton(
+                              title: 'Sign In',
+                              onPressed: () {},
+                            )
+                          ],
                         ),
                       ),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      text[index],
-                      style: whiteTextStyle.copyWith(
-                        fontSize: 16,
-                        fontWeight: light,
+                    if (index != 2)
+                      const SizedBox(
+                        height: 80,
                       ),
-                      textAlign: TextAlign.center,
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(
-                        top: 50,
-                        bottom: 80,
-                      ),
-                      child: CustomFilledButton(
-                        onPressed: () {
-                          Navigator.pushNamed(context, '/sign-up');
-                        },
-                        tittle: 'Get Started',
-                        width: 220,
-                      ),
-                    ),
                   ],
                 ),
-              )
+              ),
             ],
           );
         },

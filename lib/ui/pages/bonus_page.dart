@@ -152,7 +152,7 @@ Widget startButton(context) {
     child: CustomFilledButton(
       tittle: 'Start Fly Now',
       onPressed: () {
-        Navigator.pushNamed(context, '/main');
+        Navigator.pushNamed(context, '/home');
       },
     ),
   );

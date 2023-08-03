@@ -1,6 +1,7 @@
 import 'package:bale_travel/ui/pages/bonus_page.dart';
 import 'package:bale_travel/ui/pages/get_started_page.dart';
 import 'package:bale_travel/ui/pages/home_page.dart';
+import 'package:bale_travel/ui/pages/main_page.dart';
 import 'package:bale_travel/ui/pages/sign_up_page.dart';
 import 'package:bale_travel/ui/pages/splash_page.dart';
 import 'package:flutter/material.dart';
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
         '/sign-up': (context) => const SignUpPage(),
         '/bonus-page': (context) => const BonusPage(),
         '/home': (context) => const HomePage(),
+        '/main': (context) => const MainPage(),
       },
     );
   }

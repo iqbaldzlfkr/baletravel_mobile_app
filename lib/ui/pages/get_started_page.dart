@@ -114,7 +114,7 @@ class _GetStartedPageState extends State<GetStartedPage> {
                             CustomSignInButton(
                               title: 'Sign In',
                               onPressed: () {},
-                            )
+                            ),
                           ],
                         ),
                       ),

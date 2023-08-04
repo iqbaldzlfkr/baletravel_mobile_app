@@ -1,4 +1,7 @@
 import 'package:bale_travel/shared/theme.dart';
+import 'package:bale_travel/ui/widgets/buttons.dart';
+import 'package:bale_travel/ui/widgets/interest_item.dart';
+import 'package:bale_travel/ui/widgets/photo_item.dart';
 import 'package:flutter/material.dart';
 
 class DetailDestinationPage extends StatelessWidget {
@@ -8,12 +11,14 @@ class DetailDestinationPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundColor,
-      body: Stack(
-        children: [
-          backgroundImage(),
-          customShadow(),
-          content(),
-        ],
+      body: SingleChildScrollView(
+        child: Stack(
+          children: [
+            backgroundImage(),
+            customShadow(),
+            content(),
+          ],
+        ),
       ),
     );
   }
@@ -78,6 +83,7 @@ Widget content() {
             ),
           ),
         ),
+        // TITLE
         Container(
           margin: const EdgeInsets.only(
             top: 256,
@@ -130,6 +136,136 @@ Widget content() {
                     ),
                   )
                 ],
+              ),
+            ],
+          ),
+        ),
+        // DESCRIPTION
+        Container(
+          width: double.infinity,
+          margin: const EdgeInsets.only(
+            top: 30,
+          ),
+          padding: const EdgeInsets.symmetric(
+            horizontal: 20,
+            vertical: 30,
+          ),
+          decoration: BoxDecoration(
+            color: whiteColor,
+            borderRadius: BorderRadius.circular(18),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'About',
+                style: blackTextStyle.copyWith(
+                  fontSize: 16,
+                  fontWeight: semiBold,
+                ),
+              ),
+              const SizedBox(
+                height: 6,
+              ),
+              Text(
+                'Berada di jalur jalan provinsi yang menghubungkan Denpasar Singaraja serta letaknya yang dekat dengan Kebun Raya Eka Karya menjadikan tempat Bali.',
+                style: blackTextStyle.copyWith(
+                  height: 2,
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Text(
+                'Photos',
+                style: blackTextStyle.copyWith(
+                  fontSize: 16,
+                  fontWeight: semiBold,
+                ),
+              ),
+              const SizedBox(
+                height: 6,
+              ),
+              Row(
+                children: [
+                  PhotoItem(
+                    imageUrl: 'assets/image_photo1.png',
+                  ),
+                  PhotoItem(
+                    imageUrl: 'assets/image_photo2.png',
+                  ),
+                  PhotoItem(
+                    imageUrl: 'assets/image_photo3.png',
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Text(
+                'Interests',
+                style: blackTextStyle.copyWith(
+                  fontSize: 16,
+                  fontWeight: semiBold,
+                ),
+              ),
+              const SizedBox(
+                height: 6,
+              ),
+              Row(
+                children: [
+                  InterestItem(textInterest: 'Kids Park'),
+                  InterestItem(textInterest: 'Honor Bridge'),
+                ],
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Row(
+                children: [
+                  InterestItem(textInterest: 'City Museum'),
+                  InterestItem(textInterest: 'Central Mall'),
+                ],
+              ),
+            ],
+          ),
+        ),
+        Container(
+          width: double.infinity,
+          margin: const EdgeInsets.symmetric(
+            vertical: 30,
+          ),
+          child: Row(
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'IDR 2.500.000',
+                      style: blackTextStyle.copyWith(
+                        fontSize: 18,
+                        fontWeight: medium,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 4,
+                    ),
+                    Text(
+                      'per Orang',
+                      style: greyTextStyle.copyWith(
+                        fontWeight: light,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              CustomFilledButton(
+                width: 170,
+                title: 'Book Now',
+                onPressed: () {
+                  
+                },
               ),
             ],
           ),

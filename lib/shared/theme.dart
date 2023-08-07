@@ -10,6 +10,8 @@ Color redColor = const Color(0xffEB70A5);
 Color backgroundColor = const Color(0xffFAFAFA);
 Color inactiveColor = const Color(0xffDBD7EC);
 Color transparentColor = Colors.transparent;
+Color availableColor = const Color(0xffE0D9FF);
+Color unavailableColor = const Color(0xffEBECF1);
 
 TextStyle blackTextStyle = GoogleFonts.poppins(
   color: blackColor,

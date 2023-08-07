@@ -52,14 +52,16 @@ class _GetStartedPageState extends State<GetStartedPage> {
                 child: Align(
                   alignment: Alignment.topRight,
                   child: Column(
-                    children: List.generate(3, (indexDots){
+                    children: List.generate(3, (indexDots) {
                       return Container(
                         width: 8,
-                        height: index == indexDots? 25 : 8,
+                        height: index == indexDots ? 25 : 8,
                         margin: const EdgeInsets.only(bottom: 2),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8),
-                          color: index == indexDots? primaryColor : primaryColor.withOpacity(0.3),
+                          color: index == indexDots
+                              ? primaryColor
+                              : primaryColor.withOpacity(0.3),
                         ),
                       );
                     }),
@@ -110,8 +112,14 @@ class _GetStartedPageState extends State<GetStartedPage> {
                               title: 'Get Started',
                               width: 220,
                             ),
-                            const SizedBox(height: 20,),
-                            CustomSignInButton(
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            // CustomSignInButton(
+                            //   title: 'Sign In',
+                            //   onPressed: () {},
+                            // ),
+                            CustomTextButton(
                               title: 'Sign In',
                               onPressed: () {},
                             ),

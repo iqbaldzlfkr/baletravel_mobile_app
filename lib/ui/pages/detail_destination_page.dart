@@ -1,4 +1,5 @@
 import 'package:bale_travel/shared/theme.dart';
+import 'package:bale_travel/ui/pages/choose_seat_page.dart';
 import 'package:bale_travel/ui/widgets/buttons.dart';
 import 'package:bale_travel/ui/widgets/interest_item.dart';
 import 'package:bale_travel/ui/widgets/photo_item.dart';
@@ -16,7 +17,7 @@ class DetailDestinationPage extends StatelessWidget {
           children: [
             backgroundImage(),
             customShadow(),
-            content(),
+            content(context),
           ],
         ),
       ),
@@ -59,7 +60,7 @@ Widget customShadow() {
   );
 }
 
-Widget content() {
+Widget content(context) {
   return Container(
     width: double.infinity,
     margin: const EdgeInsets.symmetric(
@@ -264,7 +265,12 @@ Widget content() {
                 width: 170,
                 title: 'Book Now',
                 onPressed: () {
-                  
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ChooseSeatPage(),
+                    ),
+                  );
                 },
               ),
             ],

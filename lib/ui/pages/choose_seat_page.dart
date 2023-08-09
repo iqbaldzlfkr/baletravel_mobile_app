@@ -1,4 +1,5 @@
 import 'package:bale_travel/shared/theme.dart';
+import 'package:bale_travel/ui/widgets/buttons.dart';
 import 'package:bale_travel/ui/widgets/seat_item.dart';
 import 'package:flutter/material.dart';
 
@@ -17,6 +18,7 @@ class ChooseSeatPage extends StatelessWidget {
           title(),
           seatStatus(),
           selectSeat(),
+          checkoutButton(),
         ],
       ),
     );
@@ -194,8 +196,12 @@ Widget selectSeat() {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              SeatItem(status: 2,),
-              SeatItem(status: 2,),
+              SeatItem(
+                status: 2,
+              ),
+              SeatItem(
+                status: 2,
+              ),
               SizedBox(
                 width: 48,
                 height: 48,
@@ -208,8 +214,12 @@ Widget selectSeat() {
                   ),
                 ),
               ),
-              SeatItem(status: 0,),
-              SeatItem(status: 2,),
+              SeatItem(
+                status: 0,
+              ),
+              SeatItem(
+                status: 2,
+              ),
             ],
           ),
         ),
@@ -220,8 +230,12 @@ Widget selectSeat() {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              SeatItem(status: 0,),
-              SeatItem(status: 0,),
+              SeatItem(
+                status: 0,
+              ),
+              SeatItem(
+                status: 0,
+              ),
               SizedBox(
                 width: 48,
                 height: 48,
@@ -234,8 +248,12 @@ Widget selectSeat() {
                   ),
                 ),
               ),
-              SeatItem(status: 0,),
-              SeatItem(status: 2,),
+              SeatItem(
+                status: 0,
+              ),
+              SeatItem(
+                status: 2,
+              ),
             ],
           ),
         ),
@@ -246,8 +264,12 @@ Widget selectSeat() {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              SeatItem(status: 1,),
-              SeatItem(status: 1,),
+              SeatItem(
+                status: 1,
+              ),
+              SeatItem(
+                status: 1,
+              ),
               SizedBox(
                 width: 48,
                 height: 48,
@@ -260,8 +282,12 @@ Widget selectSeat() {
                   ),
                 ),
               ),
-              SeatItem(status: 0,),
-              SeatItem(status: 0,),
+              SeatItem(
+                status: 0,
+              ),
+              SeatItem(
+                status: 0,
+              ),
             ],
           ),
         ),
@@ -272,8 +298,12 @@ Widget selectSeat() {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              SeatItem(status: 0,),
-              SeatItem(status: 2,),
+              SeatItem(
+                status: 0,
+              ),
+              SeatItem(
+                status: 2,
+              ),
               SizedBox(
                 width: 48,
                 height: 48,
@@ -286,8 +316,12 @@ Widget selectSeat() {
                   ),
                 ),
               ),
-              SeatItem(status: 0,),
-              SeatItem(status: 0,),
+              SeatItem(
+                status: 0,
+              ),
+              SeatItem(
+                status: 0,
+              ),
             ],
           ),
         ),
@@ -298,26 +332,93 @@ Widget selectSeat() {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              SeatItem(status: 0,),
-              SeatItem(status: 0,),
+              SeatItem(
+                status: 0,
+              ),
+              SeatItem(
+                status: 0,
+              ),
               SizedBox(
                 width: 48,
                 height: 48,
                 child: Center(
                   child: Text(
-                    '1',
+                    '5',
                     style: greyTextStyle.copyWith(
                       fontSize: 16,
                     ),
                   ),
                 ),
               ),
-              SeatItem(status: 2,),
-              SeatItem(status: 0,),
+              SeatItem(
+                status: 2,
+              ),
+              SeatItem(
+                status: 0,
+              ),
             ],
           ),
         ),
+        Container(
+          margin: const EdgeInsets.only(
+            top: 30,
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Your seat',
+                style: greyTextStyle.copyWith(
+                  fontWeight: light,
+                ),
+              ),
+              Text(
+                'A3, B3',
+                style: blackTextStyle.copyWith(
+                  fontSize: 16,
+                  fontWeight: medium,
+                ),
+              ),
+            ],
+          ),
+        ),
+        Container(
+          margin: const EdgeInsets.only(
+            top: 16,
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Total',
+                style: greyTextStyle.copyWith(
+                  fontWeight: light,
+                ),
+              ),
+              Text(
+                'IDR 540.000.000',
+                style: purpleTextStyle.copyWith(
+                  fontSize: 16,
+                  fontWeight: semiBold,
+                ),
+              ),
+            ],
+          ),
+        )
       ],
+    ),
+  );
+}
+
+Widget checkoutButton() {
+  return Container(
+    margin: const EdgeInsets.only(
+      top: 30,
+      bottom: 40,
+    ),
+    child: CustomFilledButton(
+      title: 'Continue to Checkout',
+      onPressed: () {},
     ),
   );
 }

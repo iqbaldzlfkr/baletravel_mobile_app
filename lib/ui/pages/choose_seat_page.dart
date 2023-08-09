@@ -1,4 +1,5 @@
 import 'package:bale_travel/shared/theme.dart';
+import 'package:bale_travel/ui/pages/checkout_page.dart';
 import 'package:bale_travel/ui/widgets/buttons.dart';
 import 'package:bale_travel/ui/widgets/seat_item.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +19,7 @@ class ChooseSeatPage extends StatelessWidget {
           title(),
           seatStatus(),
           selectSeat(),
-          checkoutButton(),
+          checkoutButton(context),
         ],
       ),
     );
@@ -410,7 +411,7 @@ Widget selectSeat() {
   );
 }
 
-Widget checkoutButton() {
+Widget checkoutButton(context) {
   return Container(
     margin: const EdgeInsets.only(
       top: 30,
@@ -418,7 +419,14 @@ Widget checkoutButton() {
     ),
     child: CustomFilledButton(
       title: 'Continue to Checkout',
-      onPressed: () {},
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const CheckoutPage(),
+          ),
+        );
+      },
     ),
   );
 }

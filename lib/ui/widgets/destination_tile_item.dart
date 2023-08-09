@@ -87,7 +87,7 @@ class DestinationTileItem extends StatelessWidget {
                   margin: const EdgeInsets.only(
                     right: 2,
                   ),
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage(
                         'assets/icon_star.png',

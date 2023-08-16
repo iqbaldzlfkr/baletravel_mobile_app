@@ -1,3 +1,4 @@
+import 'package:bale_travel/cubit/auth_cubit.dart';
 import 'package:bale_travel/cubit/page_cubit.dart';
 import 'package:bale_travel/ui/pages/bonus_page.dart';
 import 'package:bale_travel/ui/pages/get_started_page.dart';
@@ -12,7 +13,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  
+
   runApp(const MyApp());
 }
 
@@ -26,13 +27,16 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => PageCubit(),
         ),
+        BlocProvider(
+          create: (context) => AuthCubit(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         routes: {
           '/': (context) => const SplashPage(),
           '/get-started': (context) => const GetStartedPage(),
-          '/sign-up': (context) => const SignUpPage(),
+          '/sign-up': (context) => SignUpPage(),
           '/bonus-page': (context) => const BonusPage(),
           '/home': (context) => const HomePage(),
           '/main': (context) => const MainPage(),

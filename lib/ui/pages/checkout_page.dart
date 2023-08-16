@@ -1,4 +1,5 @@
 import 'package:bale_travel/shared/theme.dart';
+import 'package:bale_travel/ui/pages/success_checkout_page.dart';
 import 'package:bale_travel/ui/widgets/booking_detail_item.dart';
 import 'package:bale_travel/ui/widgets/buttons.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +19,7 @@ class CheckoutPage extends StatelessWidget {
           route(),
           bookingDetail(),
           paymentDetail(),
-          payNowButton(),
+          payNowButton(context),
           tacSection(),
         ],
       ),
@@ -335,14 +336,21 @@ Widget paymentDetail() {
   );
 }
 
-Widget payNowButton() {
+Widget payNowButton(context) {
   return Container(
     margin: const EdgeInsets.only(
       top: 30,
     ),
     child: CustomFilledButton(
       title: 'Pay Now',
-      onPressed: () {},
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => SuccessCheckoutPage(),
+          ),
+        );
+      },
     ),
   );
 }

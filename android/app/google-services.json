@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "795631051493",
+    "project_id": "baletravel-decd9",
+    "storage_bucket": "baletravel-decd9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:795631051493:android:7e039b20107f6349b72a0c",
+        "android_client_info": {
+          "package_name": "com.iqbaldzlfkr.bale_travel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "795631051493-1arm9ttug9l8k36rddne7hvqf704uo9j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqDJWgcVj-ESErUS7gPfawYTYk34PVks8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "795631051493-1arm9ttug9l8k36rddne7hvqf704uo9j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

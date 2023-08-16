@@ -28,9 +28,9 @@ class CustomBottomNavigationItem extends StatelessWidget {
             width: 24,
             height: 24,
             color: context.read<PageCubit>().state == index
-                  ? primaryColor : greyColor,
+                ? primaryColor
+                : greyColor,
           ),
-          
           Container(
             width: 30,
             height: 2,

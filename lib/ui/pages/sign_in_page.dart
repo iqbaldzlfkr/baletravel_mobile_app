@@ -3,15 +3,16 @@ import 'package:bale_travel/shared/theme.dart';
 import 'package:bale_travel/ui/widgets/buttons.dart';
 import 'package:bale_travel/ui/widgets/forms.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class SignUpPage extends StatelessWidget {
-  SignUpPage({super.key});
+class SignInPage extends StatelessWidget {
+  SignInPage({super.key});
 
-  final TextEditingController nameController = TextEditingController(text: '');
   final TextEditingController emailController = TextEditingController(text: '');
-  final TextEditingController passwordController = TextEditingController(text: '');
-  final TextEditingController hobbyController = TextEditingController(text: '');
+  final TextEditingController passwordController =
+      TextEditingController(text: '');
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,7 @@ class SignUpPage extends StatelessWidget {
           top: 32,
         ),
         child: Text(
-          'Join us and get\nyour next journey',
+          'Sign In with your\nexisting account',
           style: blackTextStyle.copyWith(
             fontSize: 24,
             fontWeight: semiBold,
@@ -33,7 +34,7 @@ class SignUpPage extends StatelessWidget {
     Widget inputSection(context) {
       return Container(
         margin: const EdgeInsets.only(
-          top: 30,
+          top: 100,
         ),
         padding: const EdgeInsets.symmetric(
           vertical: 30,
@@ -46,11 +47,6 @@ class SignUpPage extends StatelessWidget {
         child: Column(
           children: [
             CustomFormField(
-              title: 'Full Name',
-              hintText: 'Your Full Name',
-              controller: nameController,
-            ),
-            CustomFormField(
               title: 'Email Address',
               hintText: 'Your Email Address',
               controller: emailController,
@@ -61,11 +57,6 @@ class SignUpPage extends StatelessWidget {
               obscureText: true,
               controller: passwordController,
             ),
-            CustomFormField(
-              title: 'Hobby',
-              hintText: 'Your Hobby',
-              controller: hobbyController,
-            ),
             const SizedBox(
               height: 30,
             ),
@@ -73,7 +64,7 @@ class SignUpPage extends StatelessWidget {
               listener: (context, state) {
                 if (state is AuthSuccess) {
                   Navigator.pushNamedAndRemoveUntil(
-                      context, '/bonus-page', (route) => false);
+                      context, '/main', (route) => false);
                 } else if (state is AuthFailed) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
@@ -90,13 +81,12 @@ class SignUpPage extends StatelessWidget {
                   );
                 }
                 return CustomFilledButton(
-                  title: 'Sign Up',
+                  title: 'Sign In',
                   onPressed: () {
-                    context.read<AuthCubit>().signUp(
-                        email: emailController.text,
-                        password: passwordController.text,
-                        name: nameController.text,
-                        hobby: hobbyController.text);
+                    context.read<AuthCubit>().signIn(
+                          email: emailController.text,
+                          password: passwordController.text,
+                        );
                   },
                 );
               },
@@ -112,9 +102,9 @@ class SignUpPage extends StatelessWidget {
           top: 50,
         ),
         child: CustomTextButton(
-          title: 'Have an account? Sign in',
+          title: 'Don\'t have an account? Sign Up',
           onPressed: () {
-            Navigator.pushNamed(context, '/sign-in');
+            Navigator.pushNamed(context, '/sign-up');
           },
         ),
       );

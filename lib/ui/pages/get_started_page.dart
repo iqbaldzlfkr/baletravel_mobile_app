@@ -121,7 +121,9 @@ class _GetStartedPageState extends State<GetStartedPage> {
                             // ),
                             CustomTextButton(
                               title: 'Sign In',
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.pushNamed(context, '/sign-in');
+                              },
                             ),
                           ],
                         ),

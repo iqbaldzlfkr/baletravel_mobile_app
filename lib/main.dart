@@ -4,6 +4,7 @@ import 'package:bale_travel/ui/pages/bonus_page.dart';
 import 'package:bale_travel/ui/pages/get_started_page.dart';
 import 'package:bale_travel/ui/pages/home_page.dart';
 import 'package:bale_travel/ui/pages/main_page.dart';
+import 'package:bale_travel/ui/pages/sign_in_page.dart';
 import 'package:bale_travel/ui/pages/sign_up_page.dart';
 import 'package:bale_travel/ui/pages/splash_page.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
           '/': (context) => const SplashPage(),
           '/get-started': (context) => const GetStartedPage(),
           '/sign-up': (context) => SignUpPage(),
+          '/sign-in': (context) => SignInPage(),
           '/bonus-page': (context) => const BonusPage(),
           '/home': (context) => const HomePage(),
           '/main': (context) => const MainPage(),

@@ -17,7 +17,7 @@ class DestinationTileItem extends StatelessWidget {
          Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const DetailDestinationPage(),
+            builder: (context) => DetailDestinationPage(destination),
           ),
         );
       },

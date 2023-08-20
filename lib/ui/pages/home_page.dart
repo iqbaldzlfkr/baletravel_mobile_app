@@ -1,4 +1,6 @@
 import 'package:bale_travel/cubit/auth_cubit.dart';
+import 'package:bale_travel/cubit/destination_cubit.dart';
+import 'package:bale_travel/models/destination_model.dart';
 import 'package:bale_travel/shared/theme.dart';
 import 'package:bale_travel/ui/widgets/custom_bottom_navigation_item.dart';
 import 'package:bale_travel/ui/widgets/destination_card_item.dart';
@@ -6,7 +8,20 @@ import 'package:bale_travel/ui/widgets/destination_tile_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    context.read<DestinationCubit>().fetchDestinations();
+    super.initState();
+  }
+
   Widget header() {
     return BlocBuilder<AuthCubit, AuthState>(
       builder: (context, state) {
@@ -65,7 +80,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget popularDestinations() {
+  Widget popularDestinations(List<DestinationModel> destinations) {
     return Container(
       margin: const EdgeInsets.only(
         top: 30,
@@ -73,44 +88,15 @@ class HomePage extends StatelessWidget {
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(
-          children: [
-            DestinationCardItem(
-              name: 'Lake Ciliwung',
-              city: 'Tangerang',
-              imageUrl: 'assets/image_destination1.png',
-              rating: 4.8,
-            ),
-            DestinationCardItem(
-              name: 'White Houses',
-              city: 'Tangerang',
-              imageUrl: 'assets/image_destination2.png',
-              rating: 4.8,
-            ),
-            DestinationCardItem(
-              name: 'Hill Heyo',
-              city: 'Tangerang',
-              imageUrl: 'assets/image_destination3.png',
-              rating: 4.8,
-            ),
-            DestinationCardItem(
-              name: 'Menarra',
-              city: 'Tangerang',
-              imageUrl: 'assets/image_destination4.png',
-              rating: 4.8,
-            ),
-            DestinationCardItem(
-              name: 'Payung Teduh',
-              city: 'Tangerang',
-              imageUrl: 'assets/image_destination5.png',
-              rating: 4.8,
-            ),
-          ],
+          children: destinations.map((DestinationModel destination){
+            return DestinationCardItem(destination);
+          }).toList(),
         ),
       ),
     );
   }
 
-  Widget newDestinations() {
+  Widget newDestinations(List<DestinationModel> destinations) {
     return Container(
       margin: const EdgeInsets.only(
         top: 30,
@@ -128,53 +114,44 @@ class HomePage extends StatelessWidget {
               fontWeight: semiBold,
             ),
           ),
-          DestinationTileItem(
-            name: 'Danau Beratan',
-            city: 'Singajara',
-            imageUrl: 'assets/image_destination6.png',
-            rating: 4.9,
-          ),
-          DestinationTileItem(
-            name: 'Danau Beratan',
-            city: 'Singajara',
-            imageUrl: 'assets/image_destination7.png',
-            rating: 4.9,
-          ),
-          DestinationTileItem(
-            name: 'Danau Beratan',
-            city: 'Singajara',
-            imageUrl: 'assets/image_destination8.png',
-            rating: 4.9,
-          ),
-          DestinationTileItem(
-            name: 'Danau Beratan',
-            city: 'Singajara',
-            imageUrl: 'assets/image_destination9.png',
-            rating: 4.9,
-          ),
-          DestinationTileItem(
-            name: 'Danau Beratan',
-            city: 'Singajara',
-            imageUrl: 'assets/image_destination10.png',
-            rating: 4.9,
-          ),
+          Column(
+            children: destinations.map((DestinationModel destination){
+              return DestinationTileItem(destination);
+            }).toList(),
+          )
         ],
       ),
     );
   }
 
-  const HomePage({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: backgroundColor,
-      body: ListView(
-        children: [
-          header(),
-          popularDestinations(),
-          newDestinations(),
-        ],
+      body: BlocConsumer<DestinationCubit, DestinationState>(
+        listener: (context, state) {
+          if (state is DestinationFailed) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                backgroundColor: redColor,
+                content: Text(state.error),
+              ),
+            );
+          }
+        },
+        builder: (context, state) {
+          if (state is DestinationSuccess) {
+            return ListView(
+              children: [
+                header(),
+                popularDestinations(state.destinations),
+                newDestinations(state.destinations),
+              ],
+            );
+          }
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        },
       ),
     );
   }

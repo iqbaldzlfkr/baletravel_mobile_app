@@ -1,19 +1,13 @@
+import 'package:bale_travel/models/destination_model.dart';
 import 'package:bale_travel/shared/theme.dart';
 import 'package:bale_travel/ui/pages/detail_destination_page.dart';
 import 'package:flutter/material.dart';
 
 class DestinationTileItem extends StatelessWidget {
-  final String name;
-  final String city;
-  final String imageUrl;
-  final double rating;
+  final DestinationModel destination;
 
-  const DestinationTileItem({
+  const DestinationTileItem( this.destination,{
     super.key,
-    required this.name,
-    required this.city,
-    required this.imageUrl,
-    this.rating = 0.0,
   });
 
   @override
@@ -48,8 +42,8 @@ class DestinationTileItem extends StatelessWidget {
                 borderRadius: BorderRadius.circular(18),
                 image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: AssetImage(
-                    imageUrl,
+                  image: NetworkImage(
+                    destination.imageUrl,
                   ),
                 ),
               ),
@@ -59,7 +53,7 @@ class DestinationTileItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    name,
+                    destination.name,
                     style: blackTextStyle.copyWith(
                       fontSize: 18,
                       fontWeight: medium,
@@ -69,7 +63,7 @@ class DestinationTileItem extends StatelessWidget {
                     height: 5,
                   ),
                   Text(
-                    city,
+                    destination.ciy,
                     style: greyTextStyle.copyWith(
                       fontWeight: light,
                     ),
@@ -96,7 +90,7 @@ class DestinationTileItem extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  rating.toString(),
+                  destination.rating.toString(),
                   style: blackTextStyle.copyWith(
                     fontWeight: medium,
                   ),

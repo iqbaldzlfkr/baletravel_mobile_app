@@ -92,7 +92,7 @@ class DetailDestinationPage extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          destination.ciy,
+                          destination.city,
                           style: whiteTextStyle.copyWith(
                             fontSize: 16,
                             fontWeight: light,

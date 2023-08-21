@@ -111,7 +111,7 @@ class DestinationCardItem extends StatelessWidget {
                     height: 5,
                   ),
                   Text(
-                    destination.ciy,
+                    destination.city,
                     style: greyTextStyle.copyWith(
                       fontWeight: light,
                     ),

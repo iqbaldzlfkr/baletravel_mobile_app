@@ -1,10 +1,21 @@
 import 'package:bale_travel/cubit/auth_cubit.dart';
+import 'package:bale_travel/models/destination_model.dart';
 import 'package:bale_travel/shared/theme.dart';
 import 'package:bale_travel/ui/widgets/buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 
-class BonusPage extends StatelessWidget {
+class BonusPage extends StatefulWidget {
+  const BonusPage({
+    super.key,
+  });
+
+  @override
+  State<BonusPage> createState() => _BonusPageState();
+}
+
+class _BonusPageState extends State<BonusPage> {
   Widget cardSection() {
     return BlocBuilder<AuthCubit, AuthState>(
       builder: (context, state) {
@@ -86,7 +97,11 @@ class BonusPage extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  'IDR ${state.user.balance}',
+                  NumberFormat.currency(
+                    locale: 'id',
+                    symbol: 'IDR ',
+                    decimalDigits: 0,
+                  ).format(state.user.balance),
                   style: whiteTextStyle.copyWith(
                     fontSize: 26,
                     fontWeight: medium,
@@ -149,8 +164,6 @@ class BonusPage extends StatelessWidget {
       ),
     );
   }
-
-  const BonusPage({super.key});
 
   @override
   Widget build(BuildContext context) {

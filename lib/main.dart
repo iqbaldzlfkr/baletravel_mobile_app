@@ -1,6 +1,7 @@
 import 'package:bale_travel/cubit/auth_cubit.dart';
 import 'package:bale_travel/cubit/destination_cubit.dart';
 import 'package:bale_travel/cubit/page_cubit.dart';
+import 'package:bale_travel/cubit/seat_cubit.dart';
 import 'package:bale_travel/ui/pages/bonus_page.dart';
 import 'package:bale_travel/ui/pages/get_started_page.dart';
 import 'package:bale_travel/ui/pages/home_page.dart';
@@ -34,6 +35,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => DestinationCubit(),
+        ),
+         BlocProvider(
+          create: (context) => SeatCubit(),
         ),
       ],
       child: MaterialApp(

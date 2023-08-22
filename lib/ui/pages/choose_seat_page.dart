@@ -194,7 +194,6 @@ class ChooseSeatPage extends StatelessWidget {
                       ),
                       SeatItem(
                         id: 'B1',
-                        isAvailable: false,
                       ),
                       SizedBox(
                         width: 48,

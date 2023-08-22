@@ -1,4 +1,5 @@
 import 'package:bale_travel/cubit/auth_cubit.dart';
+import 'package:bale_travel/cubit/transaction_cubit.dart';
 import 'package:bale_travel/models/transaction_model.dart';
 import 'package:bale_travel/shared/theme.dart';
 import 'package:bale_travel/ui/pages/success_checkout_page.dart';
@@ -344,21 +345,36 @@ class CheckoutPage extends StatelessWidget {
     }
 
     Widget payNowButton(context) {
-      return Container(
-        margin: const EdgeInsets.only(
-          top: 30,
-        ),
-        child: CustomFilledButton(
-          title: 'Pay Now',
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => SuccessCheckoutPage(),
+      return BlocConsumer<TransactionCubit, TransactionState>(
+        listener: (context, state) {
+          if (state is TransactionSuccess) {
+            Navigator.pushNamedAndRemoveUntil(
+                context, '/success-checkout', (route) => false);
+          } else if (state is TransactionFailed) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                backgroundColor: redColor,
+                content: Text(state.error),
               ),
             );
-          },
-        ),
+          }
+        },
+        builder: (context, state) {
+          if (state is TransactionLoading) {
+            return const CircularProgressIndicator();
+          }
+          return Container(
+            margin: const EdgeInsets.only(
+              top: 30,
+            ),
+            child: CustomFilledButton(
+              title: 'Pay Now',
+              onPressed: () {
+                context.read<TransactionCubit>().createTransaction(transaction);
+              },
+            ),
+          );
+        },
       );
     }
 

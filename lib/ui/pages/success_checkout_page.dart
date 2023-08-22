@@ -1,6 +1,8 @@
+import 'package:bale_travel/cubit/page_cubit.dart';
 import 'package:bale_travel/shared/theme.dart';
 import 'package:bale_travel/ui/widgets/buttons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SuccessCheckoutPage extends StatelessWidget {
   const SuccessCheckoutPage({super.key});
@@ -52,6 +54,7 @@ class SuccessCheckoutPage extends StatelessWidget {
             title: 'My Bookings',
             width: 220,
             onPressed: () {
+              context.read<PageCubit>().setPage(1);
               Navigator.pushNamedAndRemoveUntil(
                   context, '/main', (route) => false);
             },

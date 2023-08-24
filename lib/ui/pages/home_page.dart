@@ -58,18 +58,18 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                 ),
-                Container(
-                  width: 60,
-                  height: 60,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                      image: AssetImage(
-                        'assets/image_profile.png',
-                      ),
-                    ),
-                  ),
-                ),
+                // Container(
+                //   width: 60,
+                //   height: 60,
+                //   decoration: BoxDecoration(
+                //     shape: BoxShape.circle,
+                //     image: DecorationImage(
+                //       image: AssetImage(
+                //         'assets/image_profile.png',
+                //       ),
+                //     ),
+                //   ),
+                // ),
               ],
             ),
           );

@@ -43,6 +43,8 @@ dependencies:
   cloud_firestore: ^4.8.4
   equatable: ^2.0.5
   intl: ^0.18.1
+  fluid_bottom_nav_bar: ^1.4.0
+  curved_navigation_bar: ^1.0.3
 
 dev_dependencies:
   flutter_test:
